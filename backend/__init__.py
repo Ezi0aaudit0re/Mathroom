@@ -2,8 +2,8 @@
     This is the main driver of the application server
 """
 
-from utils.application import *
-import utils.HelperService as HelperService
+from backend.utils.application import *
+import backend.utils.HelperService as HelperService
 from flask import render_template, jsonify, request
 from flask_socketio import  send, emit
 

@@ -4,7 +4,7 @@
 """
 
 
-MYSQL_HOST = 'localhost'
-MYSQL_USER = 'root'
-MYSQL_PASSWORD = 'root'
-MYSQL_DB = 'MyDB'
+MYSQL_HOST = ''
+MYSQL_USER = ''
+MYSQL_PASSWORD = ''
+MYSQL_DB = ''

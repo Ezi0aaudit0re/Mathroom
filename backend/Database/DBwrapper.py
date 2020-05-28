@@ -2,9 +2,8 @@
     This file consists of wrapper methods for the database
 
 """
-import random
-from Database.models import *
-from Database.schemas import *
+from backend.Database.models import *
+from backend.Database.schemas import *
 
 """
     THis method inserts an equation given a user

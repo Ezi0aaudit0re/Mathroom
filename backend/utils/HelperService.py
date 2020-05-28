@@ -3,7 +3,7 @@
     This file consists of functions that can be used by the front end as helper service
 """
 import random
-import Database.DBwrapper as DBwrapper
+import backend.Database.DBwrapper as DBwrapper
 
 def solve_equation(data):
 

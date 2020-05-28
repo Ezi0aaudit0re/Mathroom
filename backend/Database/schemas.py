@@ -2,7 +2,7 @@
     This file consists of marshmallow code to serialize the data
 """
 
-from Database.models import *
+from backend.Database.models import *
 from marshmallow_sqlalchemy import ModelSchema
 
 class EquationsSchema(ModelSchema):
