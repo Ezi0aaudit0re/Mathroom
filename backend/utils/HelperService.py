@@ -3,6 +3,7 @@
     This file consists of functions that can be used by the front end as helper service
 """
 import random
+import Database.DBwrapper as DBwrapper
 
 def solve_equation(data):
 
@@ -14,12 +15,13 @@ def solve_equation(data):
         result = eval(data["equation"])
 
         # TODO add to database
+        id = DBwrapper.insert_equation(data, result)
 
         return_data ={
             "code": 200,
             "message": "Success",
             "data": {
-                "id": random.randint(11, 100),  # TODO add database
+                "id": id,  # TODO add database
                 "result": result,
                 "equation": "{} = {}".format(data["equation"], result),
                 "username": data["username"],
@@ -29,7 +31,6 @@ def solve_equation(data):
             }
 
 
-        print(return_data)
         return return_data
 
     except Exception as e:
@@ -39,18 +40,33 @@ def solve_equation(data):
 
 
 def get_latest_equations():
-    return{
-            "code": 200,
-            "message": "success",
-            "data": [
-                {"id": 1, "username": "Aman Nagpal", "equation": "a + b = 10", "date_posted": "today"},
-                {"id": 2, "username": "Aman 2", "equation": "a - b = 10", "date_posted": "today"},
-                {"id": 3, "username": "Aman Nagpal", "equation": "a + b = 10", "date_posted": "today"},
-                {"id": 4, "username": "Aman 2", "equation": "a - b = 10", "date_posted": "today"},
-                {"id": 5, "username": "Aman Nagpal", "equation": "a + b = 10", "date_posted": "today"},
-                {"id": 6, "username": "Aman 2", "equation": "a - b = 10", "date_posted": "today"},
-                {"id": 7, "username": "Aman Nagpal", "equation": "a + b = 10", "date_posted": "today"},
-                {"id": 8, "username": "Aman 2", "equation": "a - b = 10", "date_posted": "today"},
-            ]
-        }
+    return DBwrapper.get_equations()
+    # return{
+    #         "code": 200,
+    #         "message": "success",
+    #         "data": [
+    #             {"id": 1, "username": "Aman Nagpal", "equation": "a + b = 10", "date_posted": "today"},
+    #             {"id": 2, "username": "Aman 2", "equation": "a - b = 10", "date_posted": "today"},
+    #             {"id": 3, "username": "Aman Nagpal", "equation": "a + b = 10", "date_posted": "today"},
+    #             {"id": 4, "username": "Aman 2", "equation": "a - b = 10", "date_posted": "today"},
+    #             {"id": 5, "username": "Aman Nagpal", "equation": "a + b = 10", "date_posted": "today"},
+    #             {"id": 6, "username": "Aman 2", "equation": "a - b = 10", "date_posted": "today"},
+    #             {"id": 7, "username": "Aman Nagpal", "equation": "a + b = 10", "date_posted": "today"},
+    #             {"id": 8, "username": "Aman 2", "equation": "a - b = 10", "date_posted": "today"},
+    #         ]
+    #     }
+
+
+
+"""
+    This function is used to add user to the database
+"""
+def add_user(user):
+
+    if "username" not in user:
+        return {"code": 500, "message": "Cannot save username"}
+
+    return DBwrapper.insert_user(user)
+
+
 

@@ -21,11 +21,8 @@ class Calculator extends React.Component {
             // mount socket 
             socket.on("newSolvedEquation", data => {
                 if(data.code !== 200) throw("Internal Server Error: Cannot solve equation")
-                let new_information = data.data
-                this.props.addNewEquation(new_information)
-                // this.setState(prevState => {
-                //     return {...prevState, result:new_information.result}
-                // })
+                this.props.addNewEquation()
+            
   
 
             })
@@ -65,7 +62,6 @@ class Calculator extends React.Component {
 
     /**  Make a post request to the server to solve the equation */
     submitEquation = (e) => {
-        console.log("Button clicked")
         e.preventDefault();
 
         let socket = this.props.socket
@@ -73,21 +69,7 @@ class Calculator extends React.Component {
         socket.emit("solveEquation", {equation: this.state.string_equation, username: this.props.username})
         return
 
-        axios.post(this.props.serverUrl + "api/equation", {equation: this.state.string_equation, username: this.props.username})
-        .then(({data}) => {
-            // handle if an error is generated
-            if(data.code !== 200){
-                console.log("Incorrect data: " + data.message)
-                return
-            }
-            else{
-                let result = data.data
-                this.setState(prevState => {
-                    return {...prevState, result:result}
-                })
-            }
-
-        })
+      
 
     }
 

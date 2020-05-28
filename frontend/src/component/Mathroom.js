@@ -7,11 +7,14 @@ import axios from 'axios'
 import io from "socket.io-client";
 
 
+
+
+
 class Mathroom extends React.Component{
 
 
 
-    state = {equations: [], equation_result: ""}
+    state = {equations: [], equation_result: "", newData: false}
     serverUrl = SERVER_URL
 
     socket = io(SERVER_URL)
@@ -31,22 +34,11 @@ class Mathroom extends React.Component{
     }
 
 
-    updateEquations = (new_information) => {
-        this.setState(prevState => {
-            return {...prevState, equations: (() => {
-
-                let temp_list = [...this.state.equations]
-                if(temp_list.length == 10){
-                    // pop last element if length is = 10 to accomodate for new value
-                    temp_list.pop()
-                }
-
-                // append data to equations 
-                temp_list.unshift(new_information)
-                return temp_list
-
-            })()}
-        })
+    updateEquations = () => {
+        this.getLatestEquations()
+        this.props.notification("New Equation")
+       
+       
     }
     
     /**
@@ -56,11 +48,14 @@ class Mathroom extends React.Component{
         axios.get(this.serverUrl + "api/equations")
         .then(({data}) => {
 
+            console.log(data)
             if(data.code !== 200) throw("All data request failed");
 
             this.setState(prevState => {
-                return {...prevState, equations: data.data}
+                return {...prevState, equations: data.data, newData: true}
             })
+
+
 
         }) 
     }
@@ -84,7 +79,7 @@ class Mathroom extends React.Component{
                     </header>
                     
                     <div className="row rounded-lg overflow-hidden shadow">
-                        <Recent equations={this.state.equations} />
+                        <Recent equations={this.state.equations} newData={this.state.newData} />
                         <Calculator submitEquation={this.submitEquation} serverUrl={this.serverUrl} username={this.props.username} socket={this.socket} addNewEquation={this.updateEquations}/>
                     </div>
                     

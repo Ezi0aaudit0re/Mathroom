@@ -51,3 +51,11 @@ input::placeholder {
   text-align: center
 
 }
+
+
+.equation-result:hover{
+    z-index: 2;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}

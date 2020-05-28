@@ -10,9 +10,21 @@
 from flask import Flask
 from flask_socketio import SocketIO, send
 from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
+import Config
+import pathlib
+from flask_marshmallow import Marshmallow
+
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
 socketio = SocketIO(app)
 CORS(app, resources=r'/api/*')
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{}/Database/mathroom.db'.format(pathlib.Path().absolute())
+
+db = SQLAlchemy(app)
+ma = Marshmallow(app)
+

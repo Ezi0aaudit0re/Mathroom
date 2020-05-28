@@ -1,6 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {  toast } from 'react-toastify';
+
+toast.configure()
 
 function App() {
   return (
