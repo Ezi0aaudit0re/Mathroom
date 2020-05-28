@@ -2,7 +2,7 @@
     THis file contains the models for the database tables
 
 """
-from backend.utils.application import db
+from utils.application import db
 from datetime import datetime
 
 
