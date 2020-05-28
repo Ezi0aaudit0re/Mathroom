@@ -43,7 +43,7 @@ def solve_equation(data):
 
 
 
-@app.get("/test")
+@app.route("/test", methods=["GET"])
 def test_server():
     return jsonify({"code": 200, "message": "Server working"}, 200)
 

@@ -3,12 +3,12 @@
 """
 
 from Database.models import *
-from utils.application import ma
+from marshmallow_sqlalchemy import ModelSchema
 
-class EquationsSchema(ma.ModelSchema):
+class EquationsSchema(ModelSchema):
     class Meta:
         model = Equations
 
-class UsersSchema(ma.ModelSchema):
+class UsersSchema(ModelSchema):
     class Meta:
         model = Users

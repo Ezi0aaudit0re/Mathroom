@@ -93,7 +93,7 @@ def get_equations():
 
         # serialize the information to include username also
         for eq in equations:
-            new_obj = EquationsSchema().dump(eq).data
+            new_obj = EquationsSchema().dump(eq)
             new_obj["user"] = eq.user.name if "user" in new_obj else False
             return_list.append(new_obj)
 
