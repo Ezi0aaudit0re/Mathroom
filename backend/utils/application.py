@@ -18,7 +18,7 @@ from flask_marshmallow import Marshmallow
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins="*")
 CORS(app, resources=r'/api/*')
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
