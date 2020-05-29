@@ -16,7 +16,7 @@ toast.configure()
 class Library extends React.Component {
 
 
-	state = {username: "Temp 6"}
+	state = {username: ""}
 
 	
 	/**
@@ -68,10 +68,9 @@ class Library extends React.Component {
 		return(
 			<div className="component-render">
 				{
-					// (this.state.username === "") 
-					// ? <Login updateUsername={this.updateUserState} setName={this.setName} />
-					// : <Mathroom username={this.state.username} equations={this.state.equations}/>
-					<Mathroom username={this.state.username} equations={this.state.equations} notification={this.notification}/>
+					(this.state.username === "") 
+					? <Login updateUsername={this.updateUserState} setName={this.setName} />
+					: <Mathroom username={this.state.username} equations={this.state.equations} notification={this.notification}/>
 				}
 
 				
