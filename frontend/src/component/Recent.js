@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {Equation} from "./Equation"
+import {Loading} from './LoadingPlaceholder'
 
 
 export const Recent = ({equations, newData}) => {
@@ -16,15 +17,22 @@ export const Recent = ({equations, newData}) => {
                     </div>
 
                     <div className="recent-box" >
-                        <div className="list-group rounded-0">
                         {
-                            equations.map(
-                                equation => <Equation equation={equation} key={equation.id} />
-                                
-                            )
+                            (equations.length > 0)
+                            ? 
+                            <div className="list-group rounded-0">
+                                {
+                                    equations.map(
+                                        equation => <Equation equation={equation} key={equation.id} />
+
+                                    )
+                                }
+                            </div>
+                            : <Loading />
+
                         }
 
-                        </div>
+             
                     </div>
                 </div>
              </div>

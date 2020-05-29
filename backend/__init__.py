@@ -5,7 +5,7 @@
 from utils.application import *
 import utils.HelperService as HelperService
 from flask import render_template, jsonify, request
-from flask_socketio import  send, emit
+from flask_socketio import  emit
 
 @app.route("/")
 def index():
@@ -15,7 +15,6 @@ def index():
 
 @app.route("/api/equations", methods=["GET"])
 def get_equations():
-
     return jsonify(HelperService.get_latest_equations())
 
 
@@ -34,9 +33,8 @@ def add_user():
 @socketio.on('solveEquation')
 def solve_equation(data):
 
+
     return_data = HelperService.solve_equation(data)
-    print("data after solving equation is")
-    print(return_data)
     if "code" in return_data:
         emit("myEquation", return_data)
         emit("newSolvedEquation", {"code": return_data["code"], "message": return_data["message"]}, broadcast=True)

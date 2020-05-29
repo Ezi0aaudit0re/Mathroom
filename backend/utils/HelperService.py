@@ -43,20 +43,7 @@ def solve_equation(data):
 
 def get_latest_equations():
     return DBwrapper.get_equations()
-    # return{
-    #         "code": 200,
-    #         "message": "success",
-    #         "data": [
-    #             {"id": 1, "username": "Aman Nagpal", "equation": "a + b = 10", "date_posted": "today"},
-    #             {"id": 2, "username": "Aman 2", "equation": "a - b = 10", "date_posted": "today"},
-    #             {"id": 3, "username": "Aman Nagpal", "equation": "a + b = 10", "date_posted": "today"},
-    #             {"id": 4, "username": "Aman 2", "equation": "a - b = 10", "date_posted": "today"},
-    #             {"id": 5, "username": "Aman Nagpal", "equation": "a + b = 10", "date_posted": "today"},
-    #             {"id": 6, "username": "Aman 2", "equation": "a - b = 10", "date_posted": "today"},
-    #             {"id": 7, "username": "Aman Nagpal", "equation": "a + b = 10", "date_posted": "today"},
-    #             {"id": 8, "username": "Aman 2", "equation": "a - b = 10", "date_posted": "today"},
-    #         ]
-    #     }
+
 
 
 

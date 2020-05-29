@@ -1,13 +1,17 @@
 import React from 'react';
 
 import { Recent } from './Recent'
+
 import  Calculator  from "./Calculator"
 import  {SERVER_URL} from '../Config'
 import axios from 'axios'
 import io from "socket.io-client";
 
 
-
+/**
+ * THis component is the parent component for the recent component 
+ * and the calculator component
+ */
 
 
 class Mathroom extends React.Component{
@@ -50,8 +54,10 @@ class Mathroom extends React.Component{
         .then(({data}) => {
 
             console.log(data)
-            if(data.code !== 200) throw("All data request failed");
+            if(data.code !== 200){
+                this.props.notification("Failed to get the latest equations from the server", "Failure")
 
+            } 
             this.setState(prevState => {
                 return {...prevState, equations: data.data, newData: true}
             })
