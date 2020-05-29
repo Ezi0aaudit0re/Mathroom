@@ -24,7 +24,7 @@ class Login extends React.Component{
             <div className="container py-5 px-4">
                 <form action="#" className="bg-light" onSubmit={this.updateUsername}>
                     <div className="input-group">
-                        <input type="text" placeholder="Type a message" aria-describedby="button-addon2" className="form-control rounded-0 border-0 py-4 bg-light" onChange={this.handleUsernameChange}/>
+                        <input type="text" placeholder="Please enter a username" aria-describedby="button-addon2" className="form-control rounded-0 border-0 py-4 bg-light" onChange={this.handleUsernameChange}/>
                         <input type="submit" id="button-addon2" className="btn btn-link" />  
                     </div>
                 
