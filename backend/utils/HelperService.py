@@ -4,6 +4,7 @@
 """
 import random
 import Database.DBwrapper as DBwrapper
+from flask import escape
 
 def solve_equation(data):
 
@@ -11,6 +12,7 @@ def solve_equation(data):
         return {"code": 401, "message": "Unauthorized"}
 
     try:
+        data["equation"] = escape(data["equation"])
 
         result = eval(data["equation"])
 
