@@ -29,7 +29,8 @@ class Mathroom extends React.Component{
 
 		}
 		catch (error){
-			console.log(error)
+            console.log(error)
+            this.props.notification(error, "Failure")
 		}
     }
 
@@ -80,7 +81,7 @@ class Mathroom extends React.Component{
                     
                     <div className="row rounded-lg overflow-hidden shadow">
                         <Recent equations={this.state.equations} newData={this.state.newData} />
-                        <Calculator submitEquation={this.submitEquation} serverUrl={this.serverUrl} username={this.props.username} socket={this.socket} addNewEquation={this.updateEquations}/>
+                        <Calculator submitEquation={this.submitEquation} serverUrl={this.serverUrl} username={this.props.username} socket={this.socket} addNewEquation={this.updateEquations} notification={this.props.notification}/>
                     </div>
                     
                   

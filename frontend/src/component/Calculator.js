@@ -20,15 +20,20 @@ class Calculator extends React.Component {
 
             // mount socket 
             socket.on("newSolvedEquation", data => {
-                if(data.code !== 200) throw("Internal Server Error: Cannot solve equation")
-                this.props.addNewEquation()
+                if(data.code === 200){
+                    this.props.addNewEquation()
+                } 
             
-  
 
             })
 
+            // message to be only updated by the current user 
+            // this updates the results window where calculation is showed
             socket.on("myEquation", data => {
-                if(data.code !== 200) throw("Internal Server Error: Cannot solve equation")
+                if(data.code !== 200){
+                    this.props.notification("Please enter a correct equation", "Failure")
+                    return
+                } 
                 let new_information = data.data
                 this.setState(prevState => {
                     return {...prevState, result:new_information.result}
@@ -39,7 +44,9 @@ class Calculator extends React.Component {
 		
 		}
 		catch (error){
-			console.log(error)
+            console.log(error)
+            console.log("calculation failed")
+            this.props.notification(error, "Failure")
 		}
     }
 
@@ -67,6 +74,8 @@ class Calculator extends React.Component {
         let socket = this.props.socket
 
         socket.emit("solveEquation", {equation: this.state.string_equation, username: this.props.username})
+
+        // TODO set loading 
         return
 
       
