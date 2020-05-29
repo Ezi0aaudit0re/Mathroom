@@ -17,7 +17,7 @@ class Mathroom extends React.Component{
     state = {equations: [], equation_result: "", newData: false}
     serverUrl = SERVER_URL
 
-    socket = io(SERVER_URL)
+    socket = io(SERVER_URL, {})
 
     // get last 10 chats from the server
 	componentDidMount(){

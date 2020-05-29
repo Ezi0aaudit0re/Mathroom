@@ -35,6 +35,8 @@ def add_user():
 def solve_equation(data):
 
     return_data = HelperService.solve_equation(data)
+    print("data after solving equation is")
+    print(return_data)
     if "code" in return_data:
         emit("myEquation", return_data)
         emit("newSolvedEquation", {"code": return_data["code"], "message": return_data["message"]}, broadcast=True)
@@ -54,7 +56,12 @@ def test_server():
 def handleMessage():
 
     print("Socket connected")
-    send("connect", broadcast=True)
+
+
+@socketio.on('disconnect')
+def handleMessage():
+
+    print("Socket disconected")
 
 
 

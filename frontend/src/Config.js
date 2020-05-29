@@ -1,1 +1,2 @@
-export const SERVER_URL = "http://127.0.0.1:5000/"
+// export const SERVER_URL = "https://aqueous-oasis-47123.herokuapp.com/"
+export const SERVER_URL = "http://0.0.0.0:5000/"
