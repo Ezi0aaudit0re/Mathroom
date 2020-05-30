@@ -24,7 +24,6 @@ export const EquationResultPlaceHolder = ({loading}) => {
                         <li>Subtraction (-)</li>
                         <li>Division (/)</li>
                         <li>Modulo (%)</li>
-                        <li>Power (**)</li>
                     </ul>
                 </div>
             </div>

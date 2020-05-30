@@ -59,6 +59,7 @@ class Mathroom extends React.Component{
 
             } 
             this.setState(prevState => {
+                console.log(data.data)
                 return {...prevState, equations: data.data, newData: true}
             })
 
